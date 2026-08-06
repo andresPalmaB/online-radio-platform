@@ -1,0 +1,29 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Frontend
+node_modules/
+dist/
+coverage/
+.vite/
+
+# Backend
+target/
+*.log
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Visual Studio Code
+.vscode/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Local certificates and keys
+*.pem
+*.key

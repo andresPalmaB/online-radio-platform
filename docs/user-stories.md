@@ -34,6 +34,8 @@ As a visitor, I want to view the weekly program schedule so that I know when eac
 - Programs are organized clearly by day.
 - The schedule is readable on desktop and mobile devices.
 
+## Administrator stories
+
 ### US-04: Manage programs
 
 As an administrator, I want to manage radio programs so that the website displays accurate program information.

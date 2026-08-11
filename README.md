@@ -30,3 +30,9 @@ A reusable online radio platform built with React, Spring Boot, PostgreSQL, and 
 ## Status
 
 The project is currently in its initial planning and setup phase.
+
+## Documentation
+
+- [MVP scope](docs/mvp-scope.md)
+- [User stories and acceptance criteria](docs/user-stories.md)
+- [System architecture](docs/architecture.md)

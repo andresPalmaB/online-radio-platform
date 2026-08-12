@@ -1,29 +1,62 @@
+import Header from './components/Header'
+import Footer from './components/Footer'
+import RadioPlayer from './components/RadioPlayer'
+import Schedule from './components/Schedule'
 import './App.css'
+
+const station = {
+  name: 'En el altar de Dios',
+  slogan: 'Una voz en el altar, siempre',
+}
+
+const currentProgram = {
+  programName: 'Ezequiel 7:23',
+  presenter: 'Antonio Bustos',
+  isLive: true,
+  streamUrl: '',
+}
+
+const weeklyPrograms = [
+  {
+    id: 1,
+    name: 'Oración de la Mañana',
+    presenter: 'Antonio Bustos',
+    time: '8:00 AM',
+  },
+  {
+    id: 2,
+    name: 'Ezequiel 7:23',
+    presenter: 'Antonio Bustos',
+    time: '2:00 PM',
+  },
+  {
+    id: 3,
+    name: 'Reflexión de la noche',
+    presenter: 'Radio Team',
+    time: '7:00 PM',
+  },
+]
 
 function App() {
   return (
     <>
-      <header>
-        <h1>Online Radio</h1>
-        <p>A voice on the air, always.</p>
-      </header>
+      <Header
+        stationName={station.name}
+        slogan={station.slogan}
+      />
 
       <main>
-        <section>
-          <h2>Now playing</h2>
-          <p>The current song will appear here.</p>
-          <button type="button">Play radio</button>
-        </section>
+        <RadioPlayer
+          programName={currentProgram.programName}
+          presenter={currentProgram.presenter}
+          isLive={currentProgram.isLive}
+          streamUrl={currentProgram.streamUrl}
+        />
 
-        <section>
-          <h2>Weekly schedule</h2>
-          <p>Upcoming programs will appear here.</p>
-        </section>
+        <Schedule programs={weeklyPrograms} />
       </main>
 
-      <footer>
-        <p>Online Radio Platform</p>
-      </footer>
+      <Footer />
     </>
   )
 }

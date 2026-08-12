@@ -1,0 +1,30 @@
+type Program = {
+    id: number
+    name: string
+    presenter: string
+    time: string
+}
+
+type ScheduleProps = {
+    programs: Program[]
+}
+
+function Schedule({ programs }: ScheduleProps) {
+    return (
+        <section>
+            <h2>Weekly schedule</h2>
+
+            <ul>
+                {programs.map((program) => (
+                    <li key={program.id}>
+                        <h3>{program.name}</h3>
+                        <p>Presented by {program.presenter}</p>
+                        <time>{program.time}</time>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    )
+}
+
+export default Schedule

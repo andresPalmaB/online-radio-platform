@@ -1,0 +1,94 @@
+.site-header {
+  background-color: #18212f;
+  color: #ffffff;
+}
+
+.site-header__content,
+.main-content,
+.site-footer {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+}
+
+.site-header__content {
+  padding-block: 32px;
+}
+
+.site-header__title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.site-header__slogan {
+  margin: 8px 0 0;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 24px;
+  padding-block: 32px;
+}
+
+.radio-player,
+.schedule {
+  padding: 24px;
+  border: 1px solid #d8dee8;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.radio-player__heading,
+.schedule__heading {
+  margin-top: 0;
+}
+
+.radio-player__status {
+  color: #b42318;
+  font-weight: 700;
+}
+
+.radio-player__button {
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background-color: #2457c5;
+  cursor: pointer;
+}
+
+.radio-player__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.schedule__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.schedule__item {
+  padding-block: 16px;
+  border-bottom: 1px solid #d8dee8;
+}
+
+.schedule__item:last-child {
+  border-bottom: 0;
+}
+
+.site-footer {
+  padding-block: 24px;
+  border-top: 1px solid #d8dee8;
+  text-align: center;
+}
+
+.site-footer__text {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}

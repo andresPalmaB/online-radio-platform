@@ -1,7 +1,7 @@
 function Footer() {
     return (
-        <footer>
-            <p>Online Radio Platform</p>
+        <footer className="site-footer">
+            <p className="site-footer__text">Online Radio Platform</p>
         </footer>
     )
 }

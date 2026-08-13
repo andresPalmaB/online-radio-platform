@@ -3,11 +3,13 @@ type HeaderProps = {
     slogan: string
 }
 
-function Header({stationName, slogan}: HeaderProps) {
+function Header({ stationName, slogan }: HeaderProps) {
   return (
-    <header>
-      <h1>{stationName}</h1>
-      <p>{slogan}</p>
+    <header className="site-header">
+      <div className="site-header__content">
+        <h1 className="site-header__title">{stationName}</h1>
+        <p className="site-header__slogan">{slogan}</p>
+      </div>
     </header>
   )
 }

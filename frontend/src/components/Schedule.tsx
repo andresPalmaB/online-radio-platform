@@ -11,12 +11,12 @@ type ScheduleProps = {
 
 function Schedule({ programs }: ScheduleProps) {
     return (
-        <section>
-            <h2>Weekly schedule</h2>
+        <section className="schedule">
+            <h2 className="schedule__heading">Weekly schedule</h2>
 
-            <ul>
+            <ul className="schedule__list">
                 {programs.map((program) => (
-                    <li key={program.id}>
+                    <li className="schedule_item" key={program.id}>
                         <h3>{program.name}</h3>
                         <p>Presented by {program.presenter}</p>
                         <time>{program.time}</time>

@@ -45,7 +45,7 @@ function App() {
         slogan={station.slogan}
       />
 
-      <main>
+      <main className='main-content'>
         <RadioPlayer
           programName={currentProgram.programName}
           presenter={currentProgram.presenter}

@@ -44,11 +44,11 @@ function RadioPlayer({
     }
 
     return (
-        <section>
-            <h2>Now Playing</h2>
-            <h3>{programName}</h3>
-            <p>Presented by {presenter}</p>
-            <p>{isLive ? 'Live now' : 'Recorded program'}</p>
+        <section className='radio-player'>
+            <h2 className='radio-player__heading'>Now Playing</h2>
+            <h3 className='radio-player__program'>{programName}</h3>
+            <p className='radio-player__presenter'>Presented by {presenter}</p>
+            <p className='radio-player__status'>{isLive ? 'Live now' : 'Recorded program'}</p>
 
             <audio 
             ref={audioRef} 
@@ -59,6 +59,7 @@ function RadioPlayer({
             />
 
             <button 
+                className='radio-player__button'
                 type="button"
                 onClick={togglePlayback}
                 disabled={!streamUrl}

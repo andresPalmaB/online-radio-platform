@@ -2,11 +2,12 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import RadioPlayer from './components/RadioPlayer'
 import Schedule from './components/Schedule'
+import { useEffect, useState } from 'react'
 import './App.css'
 
-const station = {
-  name: 'En el altar de Dios',
-  slogan: 'Una voz en el altar, siempre',
+interface Station {
+  name: string
+  slogan: string
 }
 
 const currentProgram = {
@@ -38,6 +39,36 @@ const weeklyPrograms = [
 ]
 
 function App() {
+  const [station, setStation] = useState<Station | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const loadStation = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/station')
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`)
+        }
+
+        const data: Station = await response.json()
+
+        setStation(data)
+      } catch {
+        setError('Unable to load station information.')
+      }
+    }
+
+    loadStation()
+  }, [])
+
+  if (error !== null) {
+    return <p>{error}</p>
+  }
+
+  if (station === null) {
+    return <p>Loading station information...</p>
+  }
+
   return (
     <>
       <Header

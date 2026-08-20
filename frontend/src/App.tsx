@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
 import RadioPlayer from './components/RadioPlayer'
-import Schedule from './components/Schedule'
+import Schedule, { type ScheduleEntry } from './components/Schedule'
 import { useEffect, useState } from 'react'
 import './App.css'
 
@@ -17,30 +17,11 @@ const currentProgram = {
   streamUrl: '',
 }
 
-const weeklyPrograms = [
-  {
-    id: 1,
-    name: 'Oración de la Mañana',
-    presenter: 'Antonio Bustos',
-    time: '8:00 AM',
-  },
-  {
-    id: 2,
-    name: 'Ezequiel 7:23',
-    presenter: 'Antonio Bustos',
-    time: '2:00 PM',
-  },
-  {
-    id: 3,
-    name: 'Reflexión de la noche',
-    presenter: 'Radio Team',
-    time: '7:00 PM',
-  },
-]
-
 function App() {
   const [station, setStation] = useState<Station | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [stationError, setStationError] = useState<string | null>(null)
+  const [schedule, setSchedule] = useState<ScheduleEntry[] | null>(null)
+  const [scheduleError, setScheduleError] = useState<string | null>(null)
 
   useEffect(() => {
     const loadStation = async () => {
@@ -54,19 +35,46 @@ function App() {
 
         setStation(data)
       } catch {
-        setError('Unable to load station information.')
+        setStationError('Unable to load station information.')
       }
     }
 
     loadStation()
   }, [])
 
-  if (error !== null) {
-    return <p>{error}</p>
+  useEffect(() => {
+    const loadSchedule = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/schedule')
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`)
+        }
+
+        const data: ScheduleEntry[] = await response.json()
+
+        setSchedule(data)
+      } catch {
+        setScheduleError('Unable to load schedule information.')
+      }
+    }
+
+    loadSchedule()
+  }, [])
+
+  if (stationError !== null) {
+    return <p>{stationError}</p>
   }
 
   if (station === null) {
     return <p>Loading station information...</p>
+  }
+
+  if (scheduleError !== null) {
+    return <p>{scheduleError}</p>
+  }
+
+  if (schedule === null) {
+    return <p>Loading schedule information...</p>
   }
 
   return (
@@ -84,7 +92,7 @@ function App() {
           streamUrl={currentProgram.streamUrl}
         />
 
-        <Schedule programs={weeklyPrograms} />
+        <Schedule programs={schedule} />
       </main>
 
       <Footer />

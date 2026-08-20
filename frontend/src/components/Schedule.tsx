@@ -1,12 +1,14 @@
-type Program = {
-    id: number
-    name: string
+export type ScheduleEntry = {
+    scheduleId: number
+    programId: number
+    programName: string
     presenter: string
-    time: string
+    dayOfWeek: string
+    startTime: string
 }
 
 type ScheduleProps = {
-    programs: Program[]
+    programs: ScheduleEntry[]
 }
 
 function Schedule({ programs }: ScheduleProps) {
@@ -16,10 +18,11 @@ function Schedule({ programs }: ScheduleProps) {
 
             <ul className="schedule__list">
                 {programs.map((program) => (
-                    <li className="schedule_item" key={program.id}>
-                        <h3>{program.name}</h3>
+                    <li className="schedule__item" key={program.scheduleId}>
+                        <h3>{program.programName}</h3>
                         <p>Presented by {program.presenter}</p>
-                        <time>{program.time}</time>
+                        <p>{program.dayOfWeek}</p>
+                        <time>{program.startTime}</time>
                     </li>
                 ))}
             </ul>

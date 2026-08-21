@@ -35,7 +35,7 @@ function App() {
 
         setStation(data)
       } catch {
-        setStationError('Unable to load station information.')
+        setStationError('No fue posible cargar la información de la emisora.')
       }
     }
 
@@ -54,7 +54,7 @@ function App() {
 
         setSchedule(data)
       } catch {
-        setScheduleError('Unable to load schedule information.')
+        setScheduleError('No fue posible cargar la programación.')
       }
     }
 
@@ -66,7 +66,7 @@ function App() {
   }
 
   if (station === null) {
-    return <p>Loading station information...</p>
+    return <p>Cargando la información de la emisora...</p>
   }
 
   if (scheduleError !== null) {
@@ -74,7 +74,7 @@ function App() {
   }
 
   if (schedule === null) {
-    return <p>Loading schedule information...</p>
+    return <p>Cargando programación...</p>
   }
 
   return (

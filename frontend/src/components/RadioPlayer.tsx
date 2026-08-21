@@ -23,6 +23,7 @@ function RadioPlayer({
 
         if (!streamUrl){
             console.error('No radio stream URL is configured.')
+            return
         }
 
         if (!audio.paused) {
@@ -45,10 +46,10 @@ function RadioPlayer({
 
     return (
         <section className='radio-player'>
-            <h2 className='radio-player__heading'>Now Playing</h2>
+            <h2 className='radio-player__heading'>Reproducción actual</h2>
             <h3 className='radio-player__program'>{programName}</h3>
-            <p className='radio-player__presenter'>Presented by {presenter}</p>
-            <p className='radio-player__status'>{isLive ? 'Live now' : 'Recorded program'}</p>
+            <p className='radio-player__presenter'>Presentado por {presenter}</p>
+            <p className='radio-player__status'>{isLive ? 'En vivo ahora' : 'Programa grabado'}</p>
 
             <audio 
             ref={audioRef} 
@@ -64,7 +65,7 @@ function RadioPlayer({
                 onClick={togglePlayback}
                 disabled={!streamUrl}
             >
-                {isPlaying ? 'Pause radio' : 'Play radio'}
+                {isPlaying ? 'Pausar radio' : 'Reproducir radio'}
             </button>
         </section>
     )
